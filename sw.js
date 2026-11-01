@@ -23,7 +23,7 @@ self.addEventListener('push', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   const n = event.notification;
-  const isChat = n.tag === 'chat' || /^💬/.test(n.title || '');
+  const isChat = n.tag === 'chat' || /^(💬|⭐) Chat/.test(n.title || '');
   let target = (n.data && n.data.url) || './';
   if (isChat) target = './?chat=1';
   event.waitUntil((async () => {
